@@ -4,10 +4,10 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  function bubblePass(arr, compareFunction) {
+  function bubblePass(arr, compareFunction, end) {
     let quantityOfSwaps = 0;
 
-    for (let i = 0, j = 1; j < arr.length; i++, j++) {
+    for (let i = 0, j = 1; j < end; i++, j++) {
       const firstValue = arr[i];
       const secondValue = arr[j];
       const compareValue = compareFunction(firstValue, secondValue);
@@ -41,9 +41,11 @@ function applyCustomSort() {
       };
 
     let quantityOfSwaps = 0;
+    let end = this.length;
 
     do {
-      quantityOfSwaps = bubblePass(this, compare);
+      quantityOfSwaps = bubblePass(this, compare, end);
+      end--;
     } while (quantityOfSwaps > 0);
 
     return this;
